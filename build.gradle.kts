@@ -13,6 +13,9 @@ version = "1.0"
 java.sourceCompatibility = JavaVersion.VERSION_11
 java.targetCompatibility = JavaVersion.VERSION_11
 
+val junitVersion = "5.8.1"
+val mockitoVersion = "4.0.0"
+
 repositories {
     mavenCentral()
 }
@@ -20,6 +23,16 @@ repositories {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:$junitVersion")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+
+    testImplementation("org.mockito:mockito-core:$mockitoVersion")
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
 
 application {
